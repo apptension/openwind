@@ -20,7 +20,13 @@ export const useHomeProvider = () => {
   );
 
   const getCount = useCallback(
-    ({ category, type }) => ({ category, type: startCase(type), count: data?.[category]?.[type]?.length || 0 }),
+    ({ category, type }) => ({
+      category,
+      type,
+      url: `${category}/${type}`,
+      label: startCase(type),
+      count: data?.[category]?.[type]?.length || 0,
+    }),
     []
   );
   const groupedElements = useMemo(() => groupBy(prop('category'), map(getCount, elements)), [elements, getCount]);

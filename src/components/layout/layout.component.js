@@ -10,9 +10,11 @@ export function LayoutComponent({ children }) {
         <meta name="description" content="Community driven Tailwind UI Kit" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar />
-      <main className="mt-16">{children}</main>
-      <Footer />
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <main className="mt-16 flex-1">{children}</main>
+        <Footer />
+      </div>
     </>
   );
 }
