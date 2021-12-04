@@ -18,13 +18,13 @@ export const useHomeProvider = () => {
     () => (!isEmpty(searchPhrase) ? map((e) => e.item, fuse.search(searchPhrase)) : categories),
     [searchPhrase]
   );
-  console.log(elements);
+
   const getCount = useCallback(
     ({ category, type }) => ({ category, type: startCase(type), count: data?.[category]?.[type]?.length || 0 }),
     []
   );
   const groupedElements = useMemo(() => groupBy(prop('category'), map(getCount, elements)), [elements, getCount]);
-  console.log(groupedElements);
+
   const submitSearchPhrase = (phrase) => {
     setSearchPhrase(phrase);
   };
