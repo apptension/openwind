@@ -1,4 +1,6 @@
 import { useContext } from 'react';
+import { useQuery } from 'react-query';
+import { fetcher } from '../../utils/fetcher';
 import { BoardContext } from './board.provider';
 
 export const useBoard = () => {
@@ -6,6 +8,7 @@ export const useBoard = () => {
 };
 
 export const useBoardProvider = () => {
-  // TODO: SEARCH COMPONENT LOGIC
-  return {};
+  const { data, isFetching, error, isError } = useQuery('issues', () => fetcher('/api/issues'));
+  const issues = data;
+  return { issues, isFetching, error, isError };
 };

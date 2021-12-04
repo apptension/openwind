@@ -1,6 +1,9 @@
 import Head from 'next/head';
 import { Navbar } from '../components/navbar';
+import { dehydrate, QueryClient } from 'react-query';
 import { BoardProvider } from '../modules/board/board.provider';
+import { getIssues } from '../modules/board/board.api';
+import { Kanban } from '../components/kanban';
 
 export default function Board() {
   return (
@@ -14,6 +17,18 @@ export default function Board() {
 
         <Navbar />
       </div>
+      <Kanban />
     </BoardProvider>
   );
 }
+
+/* export const getServerSideProps = async () => {
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery('issues', getIssues);
+
+  return {
+    props: { dehydratedState: dehydrate(queryClient) },
+  };
+};
+ */

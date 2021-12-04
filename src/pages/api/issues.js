@@ -5,14 +5,24 @@ export default async function handler(req, res) {
     baseURL: 'https://api.github.com',
   });
   try {
-    const response = await api.get('/repos/apptension/openwind/issues');
+    const response = await api.get('/repos/apptension/openwind/issues', {
+      withCredentials: true,
+      auth: {
+        username: process.env.GITHUB_CLIENT,
+        password: process.env.GITHUB_SECRET,
+      },
+    });
     const data = response.data;
     if (data) {
-      res.status(200).json({ data });
+      res.status(200).json(data);
+      res.end();
     } else {
       res.status(404);
+      res.end();
     }
   } catch (e) {
+    console.log(e);
     res.status(500);
+    res.end();
   }
 }
