@@ -4,64 +4,49 @@ const path = require('path');
 const yaml = require('yaml');
 const fuzzy = require('fuzzy');
 const R = require('ramda');
+const uuid = require('uuid');
 
 const types = {
-  Default: {
-    applicationShells: [],
-    headings: [],
-    dataDisplay: [],
-    lists: [],
-    forms: ['formLayouts'],
-    feedback: [],
-    navigation: [],
-    overlays: [],
-    elements: [],
-    layout: [],
-    pageExamples: [],
-  },
-  Marketing: {
-    pageSections: [],
-    elements: [],
-    feedback: [],
-    pageExamples: [],
-  },
-  Ecommerce: {
-    components: [],
-    pageExamples: [],
-  },
-  Business: {
-    components: [],
-    pageExamples: [],
-  },
+  default: [
+    'applicationShells',
+    'headings',
+    'dataDisplay',
+    'lists',
+    'forms',
+    'feedback',
+    'navigation',
+    'overlays',
+    'elements',
+    'layout',
+    'pageExamples',
+  ],
+  marketing: ['pageSections', 'elements', 'feedback', 'pageExamples'],
+  ecommerce: ['components', 'pageExamples'],
+  business: ['components', 'pageExamples'],
 };
 
 const contributors = yaml.parse(fs.readFileSync(path.join(__dirname, '../contributors.yml'), 'utf-8'));
 const elements = require(path.join(__dirname, '../elements.json'));
 
-const handleAnswers = ({ category, subcategory, type, username }) => {
+const handleAnswers = ({ category, type, username, description }) => {
   if (!contributors.includes(username)) {
     contributors.push(username);
     fs.writeFileSync(path.join(__dirname, '../contributors.yml'), yaml.stringify(contributors));
   }
-  const elementName = `${type}/${username}${Date.now()}`;
+  const id = `${uuid.v4()}`;
   fs.copySync(
     path.resolve(__dirname, `../templates/template`),
-    path.resolve(__dirname, `../lib/${category}/${subcategory}/${elementName}`)
+    path.resolve(__dirname, `../lib/${category}/${type}/${id}`)
   );
   const story = fs.readFileSync(
-    path.resolve(__dirname, `../lib/${category}/${subcategory}/${elementName}/element.stories.js`),
+    path.resolve(__dirname, `../lib/${category}/${type}/${id}/element.stories.js`),
     'utf-8'
   );
-  const newStory = story.replace('[TITLE]', `${category}/${subcategory}/${elementName}`);
-  fs.writeFileSync(
-    path.resolve(__dirname, `../lib/${category}/${subcategory}/${elementName}/element.stories.js`),
-    newStory
-  );
+  const newStory = story.replace('[TITLE]', `${category}/${type}/${id}`);
+  fs.writeFileSync(path.resolve(__dirname, `../lib/${category}/${type}/${id}/element.stories.js`), newStory);
   const newElements = R.mergeDeepWith(R.concat, elements, {
     [category]: {
-      [subcategory]: {
-        type: [{ author: username, category, subcategory, type, elementName }],
-      },
+      [type]: [{ author: username, category, type, id, description }],
     },
   });
   fs.writeJSONSync(path.join(__dirname, '../elements.json'), newElements, { spaces: 2 });
@@ -73,16 +58,8 @@ const searchCategory = (_, input = '') => {
   return fuzzyResult.map((el) => el.original);
 };
 
-const searchSubCategory = (answer, input = '') => {
-  const subCategoriesKeys = Object.keys(types[answer['category']]);
-  const fuzzyResult = fuzzy.filter(input, subCategoriesKeys);
-  return fuzzyResult.map((el) => el.original);
-};
-
 const searchType = (answer, input = '') => {
-  console.log(answer);
-  const typesValues = types[answer['category']][answer['subcategory']];
-  const fuzzyResult = fuzzy.filter(input, typesValues);
+  const fuzzyResult = fuzzy.filter(input, types[answer['category']]);
   return fuzzyResult.map((el) => el.original);
 };
 
@@ -97,12 +74,6 @@ inquirer
     },
     {
       type: 'autocomplete',
-      name: 'subcategory',
-      message: "What's the element subcategory?",
-      source: searchSubCategory,
-    },
-    {
-      type: 'autocomplete',
       name: 'type',
       message: "What's the element type?",
       source: searchType,
@@ -111,6 +82,11 @@ inquirer
       type: 'input',
       message: "What's your Github username?",
       name: 'username',
+    },
+    {
+      type: 'input',
+      message: "What's the element description?",
+      name: 'description',
     },
   ])
   .then(handleAnswers)

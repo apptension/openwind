@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { Footer } from '../footer';
 import { Navbar } from '../navbar';
 
 export function LayoutComponent({ children }) {
@@ -10,7 +11,8 @@ export function LayoutComponent({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <main>{children}</main>
+      <main className="mt-16">{children}</main>
+      <Footer />
     </>
   );
 }

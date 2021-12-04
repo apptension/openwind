@@ -1,0 +1,78 @@
+[
+  {
+    "category": "default",
+    "type": "applicationShells"
+  },
+  {
+    "category": "default",
+    "type": "headings"
+  },
+  {
+    "category": "default",
+    "type": "dataDisplay"
+  },
+  {
+    "category": "default",
+    "type": "lists"
+  },
+  {
+    "category": "default",
+    "type": "forms"
+  },
+  {
+    "category": "default",
+    "type": "feedback"
+  },
+  {
+    "category": "default",
+    "type": "navigation"
+  },
+  {
+    "category": "default",
+    "type": "overlays"
+  },
+  {
+    "category": "default",
+    "type": "elements"
+  },
+  {
+    "category": "default",
+    "type": "layout"
+  },
+  {
+    "category": "default",
+    "type": "pageExamples"
+  },
+  {
+    "category": "marketing",
+    "type": "pageSections"
+  },
+  {
+    "category": "marketing",
+    "type": "elements"
+  },
+  {
+    "category": "marketing",
+    "type": "feedback"
+  },
+  {
+    "category": "marketing",
+    "type": "pageExamples"
+  },
+  {
+    "category": "ecommerce",
+    "type": "components"
+  },
+  {
+    "category": "ecommerce",
+    "type": "pageExamples"
+  },
+  {
+    "category": "business",
+    "type": "components"
+  },
+  {
+    "category": "business",
+    "type": "pageExamples"
+  }
+]

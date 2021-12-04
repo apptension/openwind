@@ -1,24 +1,13 @@
 {
-  "button": [
-    {
-      "author": "mmmm",
-      "category": "Default",
-      "subcategory": "forms",
-      "type": "formLayouts",
-      "elementName": "formLayouts/mmmm1638627212183"
-    }
-  ],
-  "Default": {
-    "forms": {
-      "type": [
-        {
-          "author": "test",
-          "category": "Default",
-          "subcategory": "forms",
-          "type": "formLayouts",
-          "elementName": "formLayouts/test1638627419663"
-        }
-      ]
-    }
+  "default": {
+    "lists": [
+      {
+        "author": "mskwio",
+        "category": "default",
+        "type": "lists",
+        "id": "4494f6cd-d586-4685-8647-1e7d5c713669",
+        "description": "lorem"
+      }
+    ]
   }
 }
