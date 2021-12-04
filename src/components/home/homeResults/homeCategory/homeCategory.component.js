@@ -1,7 +1,7 @@
 import { HomeResult } from '../homeResult';
 
 export function HomeCategoryComponent({ category, items }) {
-  const renderItem = ({ type, count }) => <HomeResult type={type} count={count} />;
+  const renderItem = ({ url, count, label }) => <HomeResult url={url} count={count} label={label} />;
   return (
     <div className="mt-8">
       <h3 className="text-xl uppercase  mb-2">{category}</h3>
