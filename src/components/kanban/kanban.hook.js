@@ -4,12 +4,15 @@ export const useIssueType = (issues) => {
   const backlogIssues = issues?.filter((item) =>
     both(includes('todo'), includes('element'))(item.labels.map((e) => e.name))
   );
+
+  backlogIssues?.sort((a, b) => b.reactions.total_count - a.reactions.total_count);
   const inProgressIssues = issues?.filter((item) =>
     both(includes('in progress'), includes('element'))(item.labels.map((e) => e.name))
   );
   const reviewIssues = issues?.filter((item) =>
     both(includes('review'), includes('element'))(item.labels.map((e) => e.name))
   );
+
   const doneIssues = issues?.filter((item) =>
     both(includes('done'), includes('element'))(item.labels.map((e) => e.name))
   );
