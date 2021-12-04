@@ -1,8 +1,18 @@
-import { flatten } from 'ramda';
+import { includes, both } from 'ramda';
 
 export const useIssueType = (issues) => {
-  console.log('issues', issues);
-  const resultBacklogIssues = issues?.filter((item) => item.labels.some((element) => element.name === 'element'));
-  const backlogIssues = resultBacklogIssues && flatten(resultBacklogIssues);
-  return [backlogIssues];
+  const backlogIssues = issues?.filter((item) =>
+    both(includes('todo'), includes('element'))(item.labels.map((e) => e.name))
+  );
+  const inProgressIssues = issues?.filter((item) =>
+    both(includes('in progress'), includes('element'))(item.labels.map((e) => e.name))
+  );
+  const reviewIssues = issues?.filter((item) =>
+    both(includes('review'), includes('element'))(item.labels.map((e) => e.name))
+  );
+  const doneIssues = issues?.filter((item) =>
+    both(includes('done'), includes('element'))(item.labels.map((e) => e.name))
+  );
+
+  return [backlogIssues, inProgressIssues, reviewIssues, doneIssues];
 };

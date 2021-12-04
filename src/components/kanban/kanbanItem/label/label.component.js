@@ -1,5 +1,4 @@
 export const LabelComponent = ({ label }) => {
-  console.log('label', label);
   return (
     <span
       className="flex items-center h-6 px-3 text-xs font-semibold rounded-full mb-2 mr-2"

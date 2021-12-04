@@ -1,5 +1,7 @@
 import { format } from 'date-fns';
+import Image from 'next/image';
 import { Label } from './label';
+import { isEmpty } from 'ramda';
 
 export const KanbanItemComponent = ({ item }) => {
   return (
@@ -42,7 +44,24 @@ export const KanbanItemComponent = ({ item }) => {
             </svg>
             <span className="ml-1 leading-none">{item.comments}</span>
           </div>
-          <img className="w-6 h-6 ml-auto rounded-full" src={item.user.avatar_url} />
+          {console.log(item.assignees)}
+          <div className="ml-auto flex">
+            {isEmpty(item.assignees) ? (
+              <Image width={24} height={24} alt="User's avatar" className="rounded-full" src={item.user.avatar_url} />
+            ) : (
+              item.assignees.map((assignee) => (
+                <div key={assignee.id} className="ml-1">
+                  <Image
+                    width={24}
+                    height={24}
+                    alt="User's avatar"
+                    className="rounded-full"
+                    src={assignee.avatar_url}
+                  />
+                </div>
+              ))
+            )}
+          </div>
         </div>
       </div>
     </a>
