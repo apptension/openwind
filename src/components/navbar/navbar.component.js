@@ -6,10 +6,10 @@ import { NAV_ROUTES } from './navbar.const';
 export function NavbarComponent() {
   const router = useRouter();
   return (
-    <nav className="bg-white shadow">
-      <div className="flex-1 max-w-7xl mx-auto py-4 flex items-center justify-center sm:items-stretch sm:justify-start">
+    <nav className="bg-white shadow fixed left-0 right-0 top-0 z-10">
+      <div className="flex-1 max-w-7xl mx-auto flex h-16 justify-start items-center">
         <div className="flex-shrink-0 flex items-center">
-          <span className="text-black text-3xl">openwind</span>
+          <span className="text-black text-3xl pointer-events-none">openwind</span>
         </div>
         <div className="ml-6 flex space-x-8">
           {NAV_ROUTES.map(({ route, label }) => (
