@@ -5,7 +5,7 @@ import { isEmpty } from 'ramda';
 
 export const KanbanItemComponent = ({ item }) => {
   return (
-    <a href={item.url}>
+    <a href={item.html_url}>
       <div className="relative flex flex-col items-start p-4 mt-3 bg-white rounded-lg cursor-pointer bg-opacity-90 group hover:bg-opacity-100 border-2">
         <div className="flex">
           {item.labels.map((label) => (
@@ -44,7 +44,6 @@ export const KanbanItemComponent = ({ item }) => {
             </svg>
             <span className="ml-1 leading-none">{item.comments}</span>
           </div>
-          {console.log(item.assignees)}
           <div className="ml-auto flex">
             {isEmpty(item.assignees) ? (
               <Image width={24} height={24} alt="User's avatar" className="rounded-full" src={item.user.avatar_url} />

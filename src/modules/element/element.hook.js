@@ -17,6 +17,5 @@ export const useElementProvider = ({ category, type, sources }) => {
       })),
     [category, type, sources]
   );
-  console.log(elements);
   return { elements };
 };
