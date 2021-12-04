@@ -11,6 +11,7 @@ export default async function handler(req, res) {
         username: process.env.GITHUB_CLIENT,
         password: process.env.GITHUB_SECRET,
       },
+      params: { filter: 'element' },
     });
     const data = response.data;
     if (data) {

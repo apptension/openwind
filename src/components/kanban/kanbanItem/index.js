@@ -1,1 +1,1 @@
-export { KanbanItemComponent } from './kanbanItem.component';
+export { KanbanItemComponent as KanbanItem } from './kanbanItem.component';
