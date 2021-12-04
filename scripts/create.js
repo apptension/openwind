@@ -48,10 +48,21 @@ const handleAnswers = ({ category, subcategory, type, username }) => {
     path.resolve(__dirname, `../templates/template`),
     path.resolve(__dirname, `../lib/${category}/${subcategory}/${elementName}`)
   );
-  const story = fs.readFileSync(path.resolve(__dirname, `../lib/${category}/${subcategory}/${elementName}`));
-  story.replace;
+  const story = fs.readFileSync(
+    path.resolve(__dirname, `../lib/${category}/${subcategory}/${elementName}/element.stories.js`),
+    'utf-8'
+  );
+  const newStory = story.replace('[TITLE]', `${category}/${subcategory}/${elementName}`);
+  fs.writeFileSync(
+    path.resolve(__dirname, `../lib/${category}/${subcategory}/${elementName}/element.stories.js`),
+    newStory
+  );
   const newElements = R.mergeDeepWith(R.concat, elements, {
-    button: [{ author: username, category, subcategory, type, elementName }],
+    [category]: {
+      [subcategory]: {
+        type: [{ author: username, category, subcategory, type, elementName }],
+      },
+    },
   });
   fs.writeJSONSync(path.join(__dirname, '../elements.json'), newElements, { spaces: 2 });
 };
