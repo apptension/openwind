@@ -9,11 +9,17 @@ const TABS = ['Preview', 'Source'];
 
 import { ELEMENT_BOX_MODE } from './elementBox.const';
 import { supabase } from '../../../utils/supabaseClient';
+import { useElement } from '../../../modules/element/element.hook';
+import { useElementDetails } from '../../../hooks/useElementDetails';
+import { isEmpty } from 'ramda';
 
 const HEIGHT = 60;
 
-export function ElementBoxComponent({ author, description, Component, source }) {
+export function ElementBoxComponent({ author, description, Component, source, id }) {
+  const [mode, setMode] = useState(ELEMENT_BOX_MODE.PREVIEW);
   const [copied, setCopied] = useState(false);
+  const { likes, isFetching, insertLikesById, updateLikesById } = useElementDetails(id);
+
   const handleCopySuccess = () => {
     setCopied(true);
   };
@@ -28,18 +34,11 @@ export function ElementBoxComponent({ author, description, Component, source }) 
 
   const handleLike = async () => {
     console.log('likes', likes);
-    setLikes(likes + 1);
     if (likes) {
-      await supabase
-        .from('elements')
-        .update({ likes: likes + 1 })
-        .match({ element_id: id });
+      console.log('INSIDE');
+      updateLikesById.mutate({ id, likes });
     } else {
-      try {
-        await supabase.from('elements').insert([{ element_id: id, likes: likes + 1 }]);
-      } catch (e) {
-        console.log(e);
-      }
+      insertLikesById.mutate({ id, likes });
     }
   };
   return (
@@ -90,7 +89,14 @@ export function ElementBoxComponent({ author, description, Component, source }) 
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>
-      <div className="mt-2 flex justify-end">
+      <div className="mt-2 flex justify-between items-end">
+        <button
+          onClick={handleLike}
+          disabled={isFetching}
+          className="rounded p-2 flex items-end font-bold hover:bg-gray-100"
+        >
+          🔥 <span className="ml-2">{likes}</span>
+        </button>
         <p>
           Author:{' '}
           <a className="text-blue-500" target="_blank" rel="noopener noreferrer" href={`https://github.com/${author}`}>
@@ -98,10 +104,6 @@ export function ElementBoxComponent({ author, description, Component, source }) 
           </a>
         </p>
       </div>
-
-      <button onClick={handleLike}>
-        <span className="flex items-end font-bold">🔥 {likes}</span>
-      </button>
     </div>
   );
 }
