@@ -13,7 +13,7 @@ const TABS = ['Preview', 'Source'];
 
 const HEIGHT = 72;
 
-export function ElementBoxComponent({ className, author, description, Component, source }) {
+export function ElementBoxComponent({ showReactions = true, className, author, description, Component, source, id }) {
   const [copied, setCopied] = useState(false);
   const { reactions, isFetching, insertLikesById, updateLikesById, initialValue } = useElementDetails(id);
 
