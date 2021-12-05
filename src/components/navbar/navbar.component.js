@@ -33,7 +33,7 @@ export function NavbarComponent() {
               </Link>
             ))}
             <a
-              href="https://github.com/apptension/openwind/issues/new?title=[element]%20Insert%20the%20title"
+              href="https://github.com/apptension/openwind/issues/new?title=[element]%20Insert%20the%20title%20and%20leave%20the%20[element]%20tag%20at%20the%20beginning!"
               target="_blank"
               rel="noreferrer"
               className="bg-transparent text-black hover:bg-gray-300 hover:text-gray-700 transition-colors inline-flex items-center px-2 py-1 rounded text-sm font-medium"
