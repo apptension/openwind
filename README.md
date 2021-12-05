@@ -6,7 +6,7 @@ Community-Driven Tailwind UI Kit
 
 ---
 
-## Request new component 🤓
+## Request a new component 🤓
 
 Want to request a new component? Just create an issue and include `[element]` in the title. Our smart bot automatically detects your intence and creates a label. Each new issue can be viewed on our page, on the [/board](https://openwind.vercel.app/board) page.
 
@@ -22,14 +22,14 @@ npm run create-element
 yarn create-element
 ```
 
-In this step you need to pick category and type. You can choose from 4 categories:
+In this step, you need to pick a category and type. You can choose from 4 categories:
 
 - default - general components/sections
-- marketing - marketing related components, ex. newsletters, stats
+- marketing - marketing-related components, ex. newsletters, stats
 - ecommerce - ecommerce components, ex. product details, product lists, categories
-- business - businesss related components, ex. testimonials, team
+- business - business-related components, ex. testimonials, team
 
-Each category include a number of types:
+Each category includes a number of types:
 
 - default
   - applicationShells
@@ -55,9 +55,9 @@ Each category include a number of types:
   - components
   - pageExamples
 
-After you pick category and type you can provide your Github name as well as short component description.
+After you pick a category and type you can provide your Github name as well as a short component description.
 
-Then, run storybook and start work.
+Then, run the storybook and start work.
 
 ```bash
 npm run storybook
@@ -65,7 +65,7 @@ npm run storybook
 yarn storybook
 ```
 
-Grab your unique element id from newly generated object in elements.json, find your component using this id and start the magic. When you finish just create a pull request and wait for our review.
+Grab your unique element id from a newly generated object in elements.json, find your component using this id and start the magic. When you finish just create a pull request and wait for our review.
 
 ## Ready to submit? 🚀
 
@@ -87,5 +87,5 @@ After the work is done, create a Pull Request and add a comment with `resolves #
 - [ ] Support Vue.js
 - [ ] Publish components to npm
 - [ ] Add a client-side code editor with Github API integration (PR)
-- [ ] Validate element id with a pre-commit hook
+- [ ] Validate an element id with a pre-commit hook
 - [ ] Create fancy floating emoji animations on reaction click
