@@ -71,7 +71,7 @@ Grab your unique element id from a newly generated object in elements.json, find
 
 After the work is done, create a Pull Request and add a comment with `resolves #id` where #id is an issue number.
 
-## Tech stack
+## Tech stack 💻
 
 - JavaScript
 - Next.js
