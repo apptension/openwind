@@ -8,7 +8,7 @@ export const KanbanComponent = () => {
   const [backlogIssues, inProgressIssues, reviewIssues, doneIssues] = useIssueType(issues);
 
   return (
-    <div className="flex flex-col max-w-7xl mx-auto h-screen overflow-auto text-gray-700 mt-16">
+    <div className="flex flex-col max-w-7xl mx-auto h-screen overflow-auto text-gray-700">
       <div className=" mt-6">
         <h1 className="text-2xl font-bold">Components Board</h1>
       </div>
