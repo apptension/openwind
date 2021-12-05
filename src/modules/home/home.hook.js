@@ -12,11 +12,18 @@ export const useHome = () => {
 
 const fuse = new Fuse(categories, { keys: ['category', 'subcategory', 'type'] });
 
-export const useHomeProvider = () => {
+export const useHomeProvider = (element) => {
   const [searchPhrase, setSearchPhrase] = useState('');
   const elements = useMemo(
     () => (!isEmpty(searchPhrase) ? map((e) => e.item, fuse.search(searchPhrase)) : categories),
     [searchPhrase]
+  );
+  const topElement = useMemo(
+    () => ({
+      ...element,
+      Component: require(`../../../lib/${element.category}/${element.type}/${element.id}/index.js`),
+    }),
+    [element]
   );
 
   const getCount = useCallback(
@@ -34,5 +41,5 @@ export const useHomeProvider = () => {
   const submitSearchPhrase = (phrase) => {
     setSearchPhrase(phrase);
   };
-  return { elements, groupedElements, submitSearchPhrase };
+  return { elements, topElement, groupedElements, submitSearchPhrase };
 };

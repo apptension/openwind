@@ -11,14 +11,15 @@ import { ELEMENT_BOX_MODE } from './elementBox.const';
 import { supabase } from '../../../utils/supabaseClient';
 import { useElement } from '../../../modules/element/element.hook';
 import { useElementDetails } from '../../../hooks/useElementDetails';
-import { isEmpty } from 'ramda';
+import { equals, isEmpty } from 'ramda';
+import { ReactionButton } from './reactionButton';
 
 const HEIGHT = 60;
 
-export function ElementBoxComponent({ author, description, Component, source, id }) {
+export function ElementBoxComponent({ showReactions = true, author, description, Component, source, id }) {
   const [mode, setMode] = useState(ELEMENT_BOX_MODE.PREVIEW);
   const [copied, setCopied] = useState(false);
-  const { likes, isFetching, insertLikesById, updateLikesById } = useElementDetails(id);
+  const { reactions, isFetching, insertLikesById, updateLikesById, initialValue } = useElementDetails(id);
 
   const handleCopySuccess = () => {
     setCopied(true);
@@ -32,13 +33,11 @@ export function ElementBoxComponent({ author, description, Component, source, id
   }, [copied]);
   const handleCopy = () => copy(source, { onCopy: handleCopySuccess });
 
-  const handleLike = async () => {
-    console.log('likes', likes);
-    if (likes) {
-      console.log('INSIDE');
-      updateLikesById.mutate({ id, likes });
+  const handleLike = async (type) => {
+    if (!equals(reactions, initialValue)) {
+      updateLikesById.mutate({ id, reactions, value: reactions[type], type });
     } else {
-      insertLikesById.mutate({ id, likes });
+      insertLikesById.mutate({ id, value: reactions[type], type });
     }
   };
   return (
@@ -90,13 +89,43 @@ export function ElementBoxComponent({ author, description, Component, source, id
         </Tab.Panels>
       </Tab.Group>
       <div className="mt-2 flex justify-between items-end">
-        <button
-          onClick={handleLike}
-          disabled={isFetching}
-          className="rounded p-2 flex items-end font-bold hover:bg-gray-100"
-        >
-          🔥 <span className="ml-2">{likes}</span>
-        </button>
+        {showReactions ? (
+          <div className="flex">
+            <ReactionButton
+              value={reactions?.likes}
+              disabled={isFetching}
+              icon={'👍'}
+              onClick={() => handleLike('likes')}
+            />
+            <ReactionButton
+              value={reactions?.hearts}
+              disabled={isFetching}
+              icon={'❤️'}
+              onClick={() => handleLike('hearts')}
+            />
+            <ReactionButton
+              value={reactions?.unicorns}
+              disabled={isFetching}
+              icon={'🦄'}
+              onClick={() => handleLike('unicorns')}
+            />
+            <ReactionButton
+              value={reactions?.fires}
+              disabled={isFetching}
+              icon={'🔥'}
+              onClick={() => handleLike('fires')}
+            />
+            <ReactionButton
+              value={reactions?.rockets}
+              disabled={isFetching}
+              icon={'🚀'}
+              onClick={() => handleLike('rockets')}
+            />
+          </div>
+        ) : (
+          <span />
+        )}
+
         <p>
           Author:{' '}
           <a className="text-blue-500" target="_blank" rel="noopener noreferrer" href={`https://github.com/${author}`}>

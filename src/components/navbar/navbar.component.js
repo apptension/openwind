@@ -12,7 +12,9 @@ export function NavbarComponent() {
       <div className="flex-1 max-w-7xl mx-auto flex h-16 justify-between items-center">
         <div className="flex items-center">
           <div className="flex-shrink-0 flex items-center">
-            <span className="text-black text-3xl pointer-events-none">openwind</span>
+            <Link href="/">
+              <a className="text-black text-3xl ">openwind</a>
+            </Link>
           </div>
           <div className="ml-6 flex space-x-2">
             {NAV_ROUTES.map(({ route, label }) => (
