@@ -41,3 +41,4 @@ After the work is done, create a Pull Request and add a comment with `resolves #
 - [ ] Support Vue.js
 - [ ] Publish components to npm
 - [ ] Add a client-side code editor with Github API integration (PR)
+- [ ] Validate element id with a pre-commit hook
