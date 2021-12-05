@@ -63,7 +63,7 @@ export function ElementBoxComponent({ author, description, Component, source }) 
       <div className="mt-2 flex justify-end">
         <p>
           Author:{' '}
-          <a className="text-blue-500" href={`https://github.com/${author}`}>
+          <a className="text-blue-500" target="_blank" rel="noopener noreferrer" href={`https://github.com/${author}`}>
             {author}
           </a>
         </p>

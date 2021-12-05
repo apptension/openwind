@@ -8,6 +8,26 @@
         "id": "4494f6cd-d586-4685-8647-1e7d5c713669",
         "description": "lorem"
       }
+    ],
+    "forms": [
+      {
+        "author": "mskwio",
+        "category": "default",
+        "type": "forms",
+        "id": "bb64273b-786f-4d82-b6ae-a63d95f1e85f",
+        "description": "Lorem ipsum dolores"
+      }
+    ]
+  },
+  "business": {
+    "components": [
+      {
+        "author": "mskwierczynski",
+        "category": "business",
+        "type": "components",
+        "id": "a286d73b-0d83-4f41-ac01-701ad0522dd1",
+        "description": "Business component"
+      }
     ]
   }
 }
