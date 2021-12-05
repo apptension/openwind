@@ -25,8 +25,7 @@ export function ElementBoxComponent({ author, description, Component, source }) 
     }
   }, [copied]);
   const handleCopy = () => copy(source, { onCopy: handleCopySuccess });
-  const handlePreview = () => setMode(ELEMENT_BOX_MODE.PREVIEW);
-  const handleSource = () => setMode(ELEMENT_BOX_MODE.SOURCE);
+
   const handleLike = async () => {
     console.log('likes', likes);
     setLikes(likes + 1);
