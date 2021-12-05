@@ -10,7 +10,7 @@ export const useHome = () => {
   return useContext(HomeContext);
 };
 
-const fuse = new Fuse(categories, { keys: ['category', 'subcategory', 'type'] });
+const fuse = new Fuse(categories, { keys: ['category', 'type'] });
 
 export const useHomeProvider = (element) => {
   const [searchPhrase, setSearchPhrase] = useState('');
