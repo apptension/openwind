@@ -36,6 +36,16 @@ Grab your unique element id, find your component and start your magic. When you 
 
 After the work is done, create a Pull Request and add a comment with `resolves #id` where #id is an issue number.
 
+## Tech stack
+
+- JavaScript
+- Next.js
+- Tailwind
+- Vercel
+- Supabase
+- Node.js - for webhook
+- Glitch - serving webhook
+
 ## TODO 👀
 
 - [ ] Support Vue.js
