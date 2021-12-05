@@ -1,10 +1,14 @@
 import { Fragment, useEffect, useState } from 'react';
+
 import clsx from 'clsx';
 import copy from 'copy-to-clipboard';
 import { Tab } from '@headlessui/react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 const TABS = ['Preview', 'Source'];
+
+import { ELEMENT_BOX_MODE } from './elementBox.const';
+import { supabase } from '../../../utils/supabaseClient';
 
 const HEIGHT = 60;
 
@@ -21,6 +25,24 @@ export function ElementBoxComponent({ author, description, Component, source }) 
     }
   }, [copied]);
   const handleCopy = () => copy(source, { onCopy: handleCopySuccess });
+  const handlePreview = () => setMode(ELEMENT_BOX_MODE.PREVIEW);
+  const handleSource = () => setMode(ELEMENT_BOX_MODE.SOURCE);
+  const handleLike = async () => {
+    console.log('likes', likes);
+    setLikes(likes + 1);
+    if (likes) {
+      await supabase
+        .from('elements')
+        .update({ likes: likes + 1 })
+        .match({ element_id: id });
+    } else {
+      try {
+        await supabase.from('elements').insert([{ element_id: id, likes: likes + 1 }]);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  };
   return (
     <div>
       <div className="mb-2">
@@ -77,6 +99,10 @@ export function ElementBoxComponent({ author, description, Component, source }) 
           </a>
         </p>
       </div>
+
+      <button onClick={handleLike}>
+        <span className="flex items-end font-bold">🔥 {likes}</span>
+      </button>
     </div>
   );
 }
