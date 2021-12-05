@@ -16,7 +16,7 @@ import { ReactionButton } from './reactionButton';
 
 const HEIGHT = 60;
 
-export function ElementBoxComponent({ author, description, Component, source, id }) {
+export function ElementBoxComponent({ showReactions = true, author, description, Component, source, id }) {
   const [mode, setMode] = useState(ELEMENT_BOX_MODE.PREVIEW);
   const [copied, setCopied] = useState(false);
   const { reactions, isFetching, insertLikesById, updateLikesById, initialValue } = useElementDetails(id);
@@ -89,38 +89,43 @@ export function ElementBoxComponent({ author, description, Component, source, id
         </Tab.Panels>
       </Tab.Group>
       <div className="mt-2 flex justify-between items-end">
-        <div className="flex">
-          <ReactionButton
-            value={reactions?.likes}
-            disabled={isFetching}
-            icon={'👍'}
-            onClick={() => handleLike('likes')}
-          />
-          <ReactionButton
-            value={reactions?.hearts}
-            disabled={isFetching}
-            icon={'❤️'}
-            onClick={() => handleLike('hearts')}
-          />
-          <ReactionButton
-            value={reactions?.unicorns}
-            disabled={isFetching}
-            icon={'🦄'}
-            onClick={() => handleLike('unicorns')}
-          />
-          <ReactionButton
-            value={reactions?.fires}
-            disabled={isFetching}
-            icon={'🔥'}
-            onClick={() => handleLike('fires')}
-          />
-          <ReactionButton
-            value={reactions?.rockets}
-            disabled={isFetching}
-            icon={'🚀'}
-            onClick={() => handleLike('rockets')}
-          />
-        </div>
+        {showReactions ? (
+          <div className="flex">
+            <ReactionButton
+              value={reactions?.likes}
+              disabled={isFetching}
+              icon={'👍'}
+              onClick={() => handleLike('likes')}
+            />
+            <ReactionButton
+              value={reactions?.hearts}
+              disabled={isFetching}
+              icon={'❤️'}
+              onClick={() => handleLike('hearts')}
+            />
+            <ReactionButton
+              value={reactions?.unicorns}
+              disabled={isFetching}
+              icon={'🦄'}
+              onClick={() => handleLike('unicorns')}
+            />
+            <ReactionButton
+              value={reactions?.fires}
+              disabled={isFetching}
+              icon={'🔥'}
+              onClick={() => handleLike('fires')}
+            />
+            <ReactionButton
+              value={reactions?.rockets}
+              disabled={isFetching}
+              icon={'🚀'}
+              onClick={() => handleLike('rockets')}
+            />
+          </div>
+        ) : (
+          <span />
+        )}
+
         <p>
           Author:{' '}
           <a className="text-blue-500" target="_blank" rel="noopener noreferrer" href={`https://github.com/${author}`}>
