@@ -1,34 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Welcome to Opendwind!
 
-## Getting Started
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+Community-Driven Tailwind UI Kit
 
-First, run the development server:
+---
+
+## Request new component
+
+Want to request a new component? Just create an issue and include `[element]` in the title. Our smart bot automatically detects your intence and creates a label. Each new issue can be viewed on our page, on the [/board](https://openwind.vercel.app/board) page.
+
+## How to contribute?
+
+Find an interesting issue and write a comment with `in progress`. That will indicate that you started working on it and it will automatically assign you to this ticket. This issue will move to the `In progress` column in our [kanban board](https://openwind.vercel.app/board).
+
+Now, the magic begins.
 
 ```bash
-npm run dev
+npm run create-element
 # or
-yarn dev
+yarn create-element
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+then
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```bash
+npm run storybook
+# or
+yarn storybook
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Grab your unique element id, find your component and start your magic. When you finish just create a pull request and wait for our review. Please, don't change this uid, let's stick to this pattern.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Ready to submit?
 
-## Learn More
+After the work is done, create a Pull Request and add a comment with `resolves #id` where #id is an issue number.
 
-To learn more about Next.js, take a look at the following resources:
+## TODO
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [ ] Support Vue.js
+- [ ] Publish components to npm
+- [ ] Add a client-side code editor with Github API integration (PR)
