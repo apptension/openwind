@@ -2,6 +2,8 @@ import { useContext, useMemo } from 'react';
 // import { readFileSync } from 'fs-extra';
 import { ElementContext } from './element.provider';
 import data from '../../../elements.json';
+import { getLikes, insertLikes } from './element.api';
+import { useMutation, useQuery } from 'react-query';
 
 export const useElement = () => {
   return useContext(ElementContext);
@@ -17,6 +19,6 @@ export const useElementProvider = ({ category, type, sources }) => {
       })),
     [category, type, sources]
   );
-  console.log(elements);
+
   return { elements };
 };
