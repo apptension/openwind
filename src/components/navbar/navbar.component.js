@@ -32,6 +32,14 @@ export function NavbarComponent() {
                 </a>
               </Link>
             ))}
+            <a
+              href="https://github.com/apptension/openwind/issues/new?title=[element]%20Insert%20the%20title"
+              target="_blank"
+              rel="noreferrer"
+              className="bg-transparent text-black hover:bg-gray-300 hover:text-gray-700 transition-colors inline-flex items-center px-2 py-1 rounded text-sm font-medium"
+            >
+              Request a component
+            </a>
           </div>
         </div>
         <a href="https://github.com/apptension/openwind" target="_blank" rel="noreferrer noopener">
