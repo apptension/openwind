@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import clsx from 'clsx';
 import copy from 'copy-to-clipboard';
 import { Tab } from '@headlessui/react';
@@ -9,9 +9,17 @@ const TABS = ['Preview', 'Source'];
 const HEIGHT = 60;
 
 export function ElementBoxComponent({ author, description, Component, source }) {
+  const [copied, setCopied] = useState(false);
   const handleCopySuccess = () => {
-    // TODO: HANDLE COPY SUCCESS
+    setCopied(true);
   };
+  useEffect(() => {
+    if (copied) {
+      setTimeout(() => {
+        setCopied(false);
+      }, 2000);
+    }
+  }, [copied]);
   const handleCopy = () => copy(source, { onCopy: handleCopySuccess });
   return (
     <div>
@@ -41,7 +49,8 @@ export function ElementBoxComponent({ author, description, Component, source }) 
             </Tab>
           ))}
           <button onClick={handleCopy} className="bg-transparent text-white text-white, px-2 py-1 rounded text-xs">
-            Copy
+            {copied && 'Copied!'}
+            {!copied && 'Copy'}
           </button>
         </Tab.List>
         <Tab.Panels as="div" className="h-full">
