@@ -80,6 +80,7 @@ After the work is done, create a Pull Request and add a comment with `resolves #
 - Supabase
 - Node.js - for webhook
 - Glitch - serving webhook
+- inquirer - for CLI
 
 ## TODO 👀
 
