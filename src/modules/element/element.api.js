@@ -32,3 +32,12 @@ export const insertLikes = async (id, value, type) => {
     console.log(e);
   }
 };
+
+export const totalReactions = async () => {
+  try {
+    const { data } = await supabase.rpc('totalReactions');
+    return data;
+  } catch (e) {
+    console.log(e);
+  }
+};

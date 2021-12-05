@@ -14,9 +14,6 @@ export const useElementDetails = (id) => {
       return insertLikes(id, value, type);
     },
     {
-      // Optimistically update the cache value on mutate, but store
-      // the old value and return it so that it's accessible in case of
-      // an error
       onMutate: async ({ id, value, type }) => {
         await queryClient.cancelQueries('reactions');
 
@@ -25,9 +22,9 @@ export const useElementDetails = (id) => {
         queryClient.setQueryData('reactions', () => ({ value }));
         return previousValue;
       },
-      // On failure, roll back to the previous value
+
       onError: (err, variables, previousValue) => queryClient.setQueryData('reactions', previousValue),
-      // After success or failure, refetch the todos query
+
       onSettled: () => {
         queryClient.invalidateQueries('reactions');
       },
@@ -39,9 +36,6 @@ export const useElementDetails = (id) => {
       return updateLikes(id, value, type);
     },
     {
-      // Optimistically update the cache value on mutate, but store
-      // the old value and return it so that it's accessible in case of
-      // an error
       onMutate: async ({ id, value, type }) => {
         await queryClient.cancelQueries('reactions');
 
@@ -51,15 +45,15 @@ export const useElementDetails = (id) => {
 
         return previousValue;
       },
-      // On failure, roll back to the previous value
+
       onError: (err, variables, previousValue) => queryClient.setQueryData('reactions', previousValue),
-      // After success or failure, refetch the todos query
+
       onSettled: () => {
         queryClient.invalidateQueries('reactions');
       },
     }
   );
-  console.log(data);
+
   return {
     reactions: isEmpty(data) ? initialValue : data?.[0],
     isFetching,
