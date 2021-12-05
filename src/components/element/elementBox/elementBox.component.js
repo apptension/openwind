@@ -5,19 +5,15 @@ import copy from 'copy-to-clipboard';
 import { Tab } from '@headlessui/react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-const TABS = ['Preview', 'Source'];
-
-import { ELEMENT_BOX_MODE } from './elementBox.const';
-import { supabase } from '../../../utils/supabaseClient';
-import { useElement } from '../../../modules/element/element.hook';
 import { useElementDetails } from '../../../hooks/useElementDetails';
-import { equals, isEmpty } from 'ramda';
+import { equals } from 'ramda';
 import { ReactionButton } from './reactionButton';
 
-const HEIGHT = 60;
+const TABS = ['Preview', 'Source'];
 
-export function ElementBoxComponent({ showReactions = true, author, description, Component, source, id }) {
-  const [mode, setMode] = useState(ELEMENT_BOX_MODE.PREVIEW);
+const HEIGHT = 72;
+
+export function ElementBoxComponent({ className, author, description, Component, source }) {
   const [copied, setCopied] = useState(false);
   const { reactions, isFetching, insertLikesById, updateLikesById, initialValue } = useElementDetails(id);
 
@@ -41,7 +37,7 @@ export function ElementBoxComponent({ showReactions = true, author, description,
     }
   };
   return (
-    <div>
+    <div className={className}>
       <div className="mb-2">
         <p>{description}</p>
       </div>

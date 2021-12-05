@@ -7,7 +7,7 @@ export function ElementListComponent() {
   return (
     <div className="mt-10 max-w-7xl mx-auto min-h-full">
       {elements.map((data) => (
-        <ElementBox key={data.id} {...data} />
+        <ElementBox key={data.id} className="mb-4" {...data} />
       ))}
     </div>
   );

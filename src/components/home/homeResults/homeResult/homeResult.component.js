@@ -11,9 +11,11 @@ export function HomeResultComponent({ url, count, label }) {
           'cursor-pointer': count > 0,
         })}
       >
-        <div className="bg-blue-500 text-white relative rounded h-60 flex justify-center items-center">
-          {label}
-          <div className="absolute bottom-2 right-2">{count}</div>
+        <div className="bg-blue-500 overflow-hidden text-white relative rounded h-60 flex justify-center items-center">
+          <span className="text-xl font-bold">{label}</span>
+          <div className="absolute bg-gray-800 bottom-0 right-0 left-0 h-10 flex justify-center items-center">
+            <span>Components: {count}</span>
+          </div>
         </div>
       </a>
     </Link>

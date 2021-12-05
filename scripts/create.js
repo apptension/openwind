@@ -5,25 +5,9 @@ const yaml = require('yaml');
 const fuzzy = require('fuzzy');
 const R = require('ramda');
 const uuid = require('uuid');
+const data = require('../categories.json');
 
-const types = {
-  default: [
-    'applicationShells',
-    'headings',
-    'dataDisplay',
-    'lists',
-    'forms',
-    'feedback',
-    'navigation',
-    'overlays',
-    'elements',
-    'layout',
-    'pageExamples',
-  ],
-  marketing: ['pageSections', 'elements', 'feedback', 'pageExamples'],
-  ecommerce: ['components', 'pageExamples'],
-  business: ['components', 'pageExamples'],
-};
+const types = R.map(R.map(R.prop('type')), R.groupBy(R.prop('category'), data));
 
 const contributors = yaml.parse(fs.readFileSync(path.join(__dirname, '../contributors.yml'), 'utf-8'));
 const elements = require(path.join(__dirname, '../elements.json'));
