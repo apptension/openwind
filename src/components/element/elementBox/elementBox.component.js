@@ -19,7 +19,7 @@ const HEIGHT = 60;
 export function ElementBoxComponent({ author, description, Component, source, id }) {
   const [mode, setMode] = useState(ELEMENT_BOX_MODE.PREVIEW);
   const [copied, setCopied] = useState(false);
-  const { likes, isFetching, insertLikesById, updateLikesById, initialValue } = useElementDetails(id);
+  const { reactions, isFetching, insertLikesById, updateLikesById, initialValue } = useElementDetails(id);
 
   const handleCopySuccess = () => {
     setCopied(true);
@@ -34,10 +34,10 @@ export function ElementBoxComponent({ author, description, Component, source, id
   const handleCopy = () => copy(source, { onCopy: handleCopySuccess });
 
   const handleLike = async (type) => {
-    if (!equals(likes, initialValue)) {
-      updateLikesById.mutate({ id, likes: likes[type], type });
+    if (!equals(reactions, initialValue)) {
+      updateLikesById.mutate({ id, reactions, value: reactions[type], type });
     } else {
-      insertLikesById.mutate({ id, likes: likes[type], type });
+      insertLikesById.mutate({ id, value: reactions[type], type });
     }
   };
   return (
@@ -90,22 +90,32 @@ export function ElementBoxComponent({ author, description, Component, source, id
       </Tab.Group>
       <div className="mt-2 flex justify-between items-end">
         <div className="flex">
-          <ReactionButton value={likes?.likes} disabled={isFetching} icon={'👍'} onClick={() => handleLike('likes')} />
           <ReactionButton
-            value={likes?.hearts}
+            value={reactions?.likes}
+            disabled={isFetching}
+            icon={'👍'}
+            onClick={() => handleLike('likes')}
+          />
+          <ReactionButton
+            value={reactions?.hearts}
             disabled={isFetching}
             icon={'❤️'}
             onClick={() => handleLike('hearts')}
           />
           <ReactionButton
-            value={likes?.unicorns}
+            value={reactions?.unicorns}
             disabled={isFetching}
             icon={'🦄'}
             onClick={() => handleLike('unicorns')}
           />
-          <ReactionButton value={likes?.fires} disabled={isFetching} icon={'🔥'} onClick={() => handleLike('fires')} />
           <ReactionButton
-            value={likes?.rockets}
+            value={reactions?.fires}
+            disabled={isFetching}
+            icon={'🔥'}
+            onClick={() => handleLike('fires')}
+          />
+          <ReactionButton
+            value={reactions?.rockets}
             disabled={isFetching}
             icon={'🚀'}
             onClick={() => handleLike('rockets')}

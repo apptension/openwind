@@ -12,21 +12,22 @@ export const getLikes = async (id) => {
   }
 };
 
-export const updateLikes = async (id, likes, type) => {
-  console.log('api', { id, likes, type });
+export const updateLikes = async (id, value, type) => {
+  console.log('update', { id, value, type });
   try {
     await supabase
       .from('elements')
-      .update({ [type]: likes + 1 })
+      .update({ [type]: value + 1 })
       .match({ element_id: id });
   } catch (e) {
     console.log(e);
   }
 };
 
-export const insertLikes = async (id, likes, type) => {
+export const insertLikes = async (id, value, type) => {
+  console.log('insert', { value, type });
   try {
-    await supabase.from('elements').insert([{ element_id: id, [type]: likes + 1 }]);
+    await supabase.from('elements').insert([{ element_id: id, [type]: value + 1 }]);
   } catch (e) {
     console.log(e);
   }
