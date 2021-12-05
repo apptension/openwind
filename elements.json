@@ -28,6 +28,13 @@
         "type": "lists",
         "id": "a0db76fd-2005-423d-be69-f6467c581934",
         "description": "Lorem lorem"
+      },
+      {
+        "author": "kamil2",
+        "category": "default",
+        "type": "lists",
+        "id": "79cb6883-8c19-4e77-8332-a2c57ffd64e7",
+        "description": "Lorem lorem"
       }
     ],
     "forms": [

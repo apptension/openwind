@@ -22,7 +22,42 @@ npm run create-element
 yarn create-element
 ```
 
-then
+In this step you need to pick category and type. You can choose from 4 categories:
+
+- default - general components/sections
+- marketing - marketing related components, ex. newsletters, stats
+- ecommerce - ecommerce components, ex. product details, product lists, categories
+- business - businesss related components, ex. testimonials, team
+
+Each category include a number of types:
+
+- default
+  - applicationShells
+  - headings
+  - dataDisplay
+  - lists
+  - forms
+  - feedback
+  - navigation
+  - overlays
+  - elements
+  - layout
+  - pageExamples
+- marketing
+  - pageSections
+  - elements
+  - feedback
+  - pageExamples
+- ecommerce
+  - components
+  - pageExamples
+- business
+  - components
+  - pageExamples
+
+After you pick category and type you can provide your Github name as well as short component description.
+
+Then, run storybook and start work.
 
 ```bash
 npm run storybook
@@ -30,7 +65,7 @@ npm run storybook
 yarn storybook
 ```
 
-Grab your unique element id, find your component and start your magic. When you finish just create a pull request and wait for our review. Please, don't change this uid, let's stick to this pattern.
+Grab your unique element id from newly generated object in elements.json, find your component using this id and start the magic. When you finish just create a pull request and wait for our review.
 
 ## Ready to submit? 🚀
 
