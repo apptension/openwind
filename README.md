@@ -42,3 +42,4 @@ After the work is done, create a Pull Request and add a comment with `resolves #
 - [ ] Publish components to npm
 - [ ] Add a client-side code editor with Github API integration (PR)
 - [ ] Validate element id with a pre-commit hook
+- [ ] Create fancy floating emoji animations on reaction click
