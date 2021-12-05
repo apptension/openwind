@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useState } from 'react';
 
 import clsx from 'clsx';
-import copy from 'copy-to-clipboard';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Tab } from '@headlessui/react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism';
@@ -11,7 +11,7 @@ import { ReactionButton } from './reactionButton';
 
 const TABS = ['Preview', 'Source'];
 
-const HEIGHT = 72;
+const HEIGHT = 60;
 
 export function ElementBoxComponent({ showReactions = true, className, author, description, Component, source, id }) {
   const [copied, setCopied] = useState(false);
@@ -27,7 +27,6 @@ export function ElementBoxComponent({ showReactions = true, className, author, d
       }, 2000);
     }
   }, [copied]);
-  const handleCopy = () => copy(source, { onCopy: handleCopySuccess });
 
   const handleLike = async (type) => {
     if (!equals(reactions, initialValue)) {
@@ -63,10 +62,11 @@ export function ElementBoxComponent({ showReactions = true, className, author, d
               )}
             </Tab>
           ))}
-          <button onClick={handleCopy} className="bg-transparent text-white text-white, px-2 py-1 rounded text-xs">
-            {copied && 'Copied!'}
-            {!copied && 'Copy'}
-          </button>
+          <CopyToClipboard text={source} onCopy={handleCopySuccess}>
+            <span className="bg-transparent text-white text-white, px-2 py-1 rounded text-xs cursor-pointer">
+              {copied ? 'Copied!' : 'Copy'}
+            </span>
+          </CopyToClipboard>
         </Tab.List>
         <Tab.Panels as="div" className="h-full">
           <Tab.Panel as="div" className="h-full flex justify-center items-center">
