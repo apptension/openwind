@@ -1,0 +1,26 @@
+{
+  "name": "webhooks-api",
+  "version": "1.0.0",
+  "description": "A simple Nodejs API",
+  "main": "index.js",
+  "engines": {
+    "node": "14.x"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@octokit/auth-app": "^3.6.1",
+    "@octokit/auth-oauth-app": "^4.3.0",
+    "@octokit/core": "^3.5.1",
+    "@octokit/rest": "^18.12.0",
+    "axios": "^0.24.0",
+    "body-parser": "^1.19.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.16.4",
+    "octokit": "^1.7.1"
+  }
+}
