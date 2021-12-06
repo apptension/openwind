@@ -6,7 +6,7 @@ Community-Driven Tailwind UI Kit
 
 ---
 
-## Request new component 🤓
+## Request a new component 🤓
 
 Want to request a new component? Just create an issue and include `[element]` in the title. Our smart bot automatically detects your intence and creates a label. Each new issue can be viewed on our page, on the [/board](https://openwind.vercel.app/board) page.
 
@@ -22,7 +22,42 @@ npm run create-element
 yarn create-element
 ```
 
-then
+In this step, you need to pick a category and type. You can choose from 4 categories:
+
+- default - general components/sections
+- marketing - marketing-related components, ex. newsletters, stats
+- ecommerce - ecommerce components, ex. product details, product lists, categories
+- business - business-related components, ex. testimonials, team
+
+Each category includes a number of types:
+
+- default
+  - applicationShells
+  - headings
+  - dataDisplay
+  - lists
+  - forms
+  - feedback
+  - navigation
+  - overlays
+  - elements
+  - layout
+  - pageExamples
+- marketing
+  - pageSections
+  - elements
+  - feedback
+  - pageExamples
+- ecommerce
+  - components
+  - pageExamples
+- business
+  - components
+  - pageExamples
+
+After you pick a category and type you can provide your Github name as well as a short component description.
+
+Then, run the storybook and start work.
 
 ```bash
 npm run storybook
@@ -30,13 +65,13 @@ npm run storybook
 yarn storybook
 ```
 
-Grab your unique element id, find your component and start your magic. When you finish just create a pull request and wait for our review. Please, don't change this uid, let's stick to this pattern.
+Grab your unique element id from a newly generated object in elements.json, find your component using this id and start the magic. When you finish just create a pull request and wait for our review.
 
 ## Ready to submit? 🚀
 
 After the work is done, create a Pull Request and add a comment with `resolves #id` where #id is an issue number.
 
-## Tech stack
+## Tech stack 💻
 
 - JavaScript
 - Next.js
@@ -45,11 +80,12 @@ After the work is done, create a Pull Request and add a comment with `resolves #
 - Supabase
 - Node.js - for webhook
 - Glitch - serving webhook
+- inquirer - for CLI
 
 ## TODO 👀
 
 - [ ] Support Vue.js
 - [ ] Publish components to npm
 - [ ] Add a client-side code editor with Github API integration (PR)
-- [ ] Validate element id with a pre-commit hook
+- [ ] Validate an element id with a pre-commit hook
 - [ ] Create fancy floating emoji animations on reaction click
