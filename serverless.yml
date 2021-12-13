@@ -1,2 +1,6 @@
 myNextApplication:
-  component: "./node_modules/@sls-next/serverless-component" 
+  component: "@sls-next/serverless-component@3.6.0"
+  inputs:
+    domain: "openwind.apptoku.com"
+    build:
+      postBuildCommands: [ "sh ./scripts/postBuild.sh" ]

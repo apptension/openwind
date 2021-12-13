@@ -15,7 +15,6 @@
   "dependencies": {
     "@headlessui/react": "^1.4.2",
     "@heroicons/react": "^1.0.5",
-    "@sls-next/serverless-component": "^3.6.0",
     "@supabase/supabase-js": "^1.28.5",
     "axios": "^0.24.0",
     "clsx": "^1.1.1",
