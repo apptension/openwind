@@ -1,8 +1,8 @@
-import '../../../../src/styles/globals.css';
+import '../../../../styles/globals.css';
 import Element from './';
 
 export default {
-  title: 'default/lists/e093cabb-84c6-4984-939c-54afe9b60ac5',
+  title: 'default/forms/bb64273b-786f-4d82-b6ae-a63d95f1e85f',
   component: Element,
 };
 

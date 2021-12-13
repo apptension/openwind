@@ -1,7 +1,8 @@
+import '../../../../styles/globals.css';
 import Element from './';
 
 export default {
-  title: 'default/lists/4494f6cd-d586-4685-8647-1e7d5c713669',
+  title: 'business/components/a286d73b-0d83-4f41-ac01-701ad0522dd1',
   component: Element,
 };
 
