@@ -20,14 +20,14 @@ const handleAnswers = ({ category, type, username, description }) => {
   const id = `${uuid.v4()}`;
   fs.copySync(
     path.resolve(__dirname, `../templates/template`),
-    path.resolve(__dirname, `../lib/${category}/${type}/${id}`)
+    path.resolve(__dirname, `../src/lib/${category}/${type}/${id}`)
   );
   const story = fs.readFileSync(
-    path.resolve(__dirname, `../lib/${category}/${type}/${id}/element.stories.js`),
+    path.resolve(__dirname, `../src/lib/${category}/${type}/${id}/element.stories.js`),
     'utf-8'
   );
   const newStory = story.replace('[TITLE]', `${category}/${type}/${id}`);
-  fs.writeFileSync(path.resolve(__dirname, `../lib/${category}/${type}/${id}/element.stories.js`), newStory);
+  fs.writeFileSync(path.resolve(__dirname, `../src/lib/${category}/${type}/${id}/element.stories.js`), newStory);
   const newElements = R.mergeDeepWith(R.concat, elements, {
     [category]: {
       [type]: [{ author: username, category, type, id, description }],

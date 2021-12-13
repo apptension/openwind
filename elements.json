@@ -45,6 +45,15 @@
         "id": "bb64273b-786f-4d82-b6ae-a63d95f1e85f",
         "description": "Lorem ipsum dolores"
       }
+    ],
+    "headings": [
+      {
+        "author": "mskwio",
+        "category": "default",
+        "type": "headings",
+        "id": "bbac14ca-3939-4ba8-8191-8a6565b9656d",
+        "description": "Lorem"
+      }
     ]
   },
   "business": {
