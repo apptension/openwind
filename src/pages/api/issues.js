@@ -8,8 +8,8 @@ export default async function handler(req, res) {
     const response = await api.get('/repos/apptension/openwind/issues', {
       withCredentials: true,
       auth: {
-        username: process.env.GITHUB_CLIENT,
-        password: process.env.GITHUB_SECRET,
+        username: process.env.APP_GITHUB_CLIENT,
+        password: process.env.APP_GITHUB_SECRET,
       },
       params: { filter: 'element' },
     });
