@@ -24,7 +24,7 @@ export async function getServerSideProps({ params }) {
   const sources = arr.map((e) => ({
     id: e.id,
     source: readFileSync(
-      path.resolve(__dirname, `../../../../../src/lib/${e.category}/${e.type}/${e.id}/index.js`),
+      path.resolve(__dirname, `../../../lib/${e.category}/${e.type}/${e.id}/index.jsx`),
       'utf-8'
     ),
   }));

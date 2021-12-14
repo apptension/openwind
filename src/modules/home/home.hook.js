@@ -21,7 +21,7 @@ export const useHomeProvider = (element) => {
   const topElement = useMemo(
     () => ({
       ...element,
-      Component: require(`../../lib/${element.category}/${element.type}/${element.id}/index.js`),
+      Component: require(`../../lib/${element.category}/${element.type}/${element.id}/index.jsx`),
     }),
     [element]
   );

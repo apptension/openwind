@@ -14,7 +14,7 @@ export const useElementProvider = ({ category, type, sources }) => {
     () =>
       (data?.[category]?.[type] || []).map((item) => ({
         ...item,
-        Component: require(`../../lib/${item.category}/${item.type}/${item.id}/index.js`),
+        Component: require(`../../lib/${item.category}/${item.type}/${item.id}/index.jsx`),
         source: sources.find((s) => s.id === item.id)?.source,
       })),
     [category, type, sources]

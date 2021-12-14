@@ -1,3 +1,3 @@
 #!/bin/sh
 
-cp -r ./lib ./.serverless_nextjs/default-lambda
+cp -r ./src/lib ./.serverless_nextjs/default-lambda

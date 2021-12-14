@@ -35,13 +35,12 @@ export async function getServerSideProps() {
   if (!element) {
     return { props: {} };
   }
-  console.log(__dirname)
   return {
     props: {
       topElement: {
         ...element,
         source: readFileSync(
-          path.resolve(__dirname, `../../../src/lib/${element.category}/${element.type}/${element.id}/index.js`),
+          path.resolve(__dirname, `../lib/${element.category}/${element.type}/${element.id}/index.jsx`),
           'utf-8'
         ),
       },
