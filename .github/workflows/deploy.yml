@@ -16,4 +16,5 @@ jobs:
         with:
           node-version: '16'
       - run: yarn
+      - run: env >> .env.local
       - run: yarn run sls
